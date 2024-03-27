@@ -3,23 +3,24 @@ body {
     background-color: #f7f7f7;
     margin: 0;
     padding: 0;
+    font-size: 16px; /* Adjusted font size for smaller screens */
 }
 
 #title {
     background-color: #3498db;
     color: #fff;
-    font-size: 48px; /* Larger title font size for larger screens */
+    font-size: 36px; /* Larger title font size for larger screens */
     text-align: center;
-    padding: 30px 20px; /* Increased padding */
+    padding: 20px;
 }
 
 #form {
-    width: 90%; /* Increased width */
-    max-width: 800px; /* Adjust maximum width as needed */
+    width: 85%; /* Adjusted width */
+    max-width: 800px;
     margin: 20px auto;
     background-color: #fff;
-    padding: 30px; /* Increased padding */
-    border-radius: 12px; /* Larger border radius */
+    padding: 20px;
+    border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -29,17 +30,17 @@ form {
 }
 
 label {
-    margin-bottom: 20px; /* Increased margin */
+    margin-bottom: 16px; /* Adjusted margin */
     font-weight: bold;
     color: #333;
 }
 
 input, select {
-    padding: 20px; /* Increased padding */
-    margin-bottom: 24px; /* Increased margin */
-    border: 2px solid #ccc; /* Thicker border */
-    border-radius: 8px; /* Larger border radius */
-    font-size: 20px; /* Larger font size */
+    padding: 16px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px; /* Adjusted font size */
 }
 
 input[type="submit"] {
@@ -48,7 +49,7 @@ input[type="submit"] {
     cursor: pointer;
     border: none;
     transition: background-color 0.3s ease;
-    font-size: 24px; /* Larger font size */
+    font-size: 20px; /* Larger font size */
 }
 
 input[type="submit"]:hover {
@@ -56,15 +57,15 @@ input[type="submit"]:hover {
 }
 
 #output {
-    width: 90%; /* Increased width */
-    max-width: 800px; /* Adjust maximum width as needed */
+    width: 85%; /* Adjusted width */
+    max-width: 800px;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    font-size: 20px; /* Larger font size */
+    font-size: 16px; /* Adjusted font size */
     margin: 20px auto;
     background-color: #fff;
-    padding: 30px; /* Increased padding */
-    border-radius: 12px; /* Larger border radius */
+    padding: 20px;
+    border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -74,11 +75,11 @@ table {
 }
 
 table, th, td {
-    border: 2px solid #ddd; /* Thicker border */
+    border: 2px solid #ddd;
 }
 
 th, td {
-    padding: 20px; /* Increased padding */
+    padding: 16px; /* Adjusted padding */
     text-align: left;
 }
 
@@ -90,25 +91,22 @@ th {
 /* Media Queries */
 @media only screen and (max-width: 600px) {
     #title {
-        font-size: 36px; /* Smaller title font size for mobile devices */
-        padding: 20px;
+        font-size: 24px; /* Smaller title font size for mobile devices */
     }
 
     #form, #output {
-        width: 90%;
-        padding: 20px;
+        padding: 16px; /* Adjusted padding */
     }
 
     input, select {
-        padding: 16px;
-        margin-bottom: 20px;
+        padding: 12px; /* Adjusted padding */
     }
 
     input[type="submit"] {
-        padding: 16px;
+        padding: 12px; /* Adjusted padding */
     }
 
     table {
-        font-size: 16px;
+        font-size: 14px; /* Smaller font size for tables on mobile devices */
     }
 }

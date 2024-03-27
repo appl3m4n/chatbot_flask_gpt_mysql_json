@@ -1,5 +1,16 @@
+from flask import Flask, render_template, request
+from flask_mysqldb import MySQL
 import json
 from difflib import get_close_matches
+
+app = Flask(__name__)
+
+app.config['MYSQL_HOST'] = "localhost"
+app.config['MYSQL_USER'] = "root"
+app.config['MYSQL_PASSWORD'] = ""
+app.config['MYSQL_DB'] = "users_db"
+
+mysql = MySQL(app)
 
 def load_knowledge_base(file_path: str) -> str:
     with open(file_path, 'r') as file:
@@ -26,25 +37,39 @@ def get_link_for_question(question: str, knowledge_base: dict) -> str | None:
             return q.get("link")  # Return the link if it exists, otherwise return None
     return None
 
+@app.route('/')
+def index():
+    return render_template('index2.html')
+
+@app.route('/submit', methods=['GET', 'POST'])
 def chat_bot():
     knowledge_base: dict = load_knowledge_base('knowledge_base.json')
+    chatgpt_input = request.form['chatgpt']
+    best_match = find_best_match(chatgpt_input, [q["question"] for q in knowledge_base["questions"]])
 
-    while True:
-        user_input: str = input('You: ')
-        if user_input.lower() == 'quit':
-            break
-
-        best_match: str | None = find_best_match(user_input, [q["question"] for q in knowledge_base["questions"]])
-
-        if best_match:
-            answer: str = get_answer_for_question(best_match, knowledge_base)
-            link: str = get_link_for_question(best_match, knowledge_base)
-            if link:
-                print(f'Bot: {answer} Link: {link}')
-            else:
-                print(f'Bot: {answer}')  # If link is missing or not defined
+    if best_match:
+        answer = get_answer_for_question(best_match, knowledge_base)
+        link = get_link_for_question(best_match, knowledge_base)
+        if link:
+            chatgpt_output = f'{answer} Link: {link}'
         else:
-            print('Bot: I don\'t know the answer.')
+            chatgpt_output = f'{answer}' # If link is missing or not defined
+    else:
+        chatgpt_output = 'I don\'t know the answer.'
+
+    # Store user input and model output in the database
+    cur = mysql.connection.cursor()
+    cur.execute("INSERT INTO users_gpt (input, output) VALUES (%s, %s)", (chatgpt_input, chatgpt_output))
+    mysql.connection.commit()
+    cur.close()
+
+    # Fetch all data from the database
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM users_gpt ORDER BY id DESC LIMIT 5")
+    userDetails = cur.fetchall()
+    cur.close()
+
+    return render_template('index2.html', chatgpt_input=chatgpt_input, chatgpt_output=chatgpt_output, userDetails=userDetails)
             #new_answer: str = input('Type the answer or "skip" to skip: ')
 
             #if new_answer.lower() != 'skip':
@@ -52,4 +77,5 @@ def chat_bot():
                 #save_knowledge_base('knowledge_base.json', knowledge_base)
 
 if __name__ == "__main__":
-    chat_bot()
+    #chat_bot()
+    app.run(debug=False, host='0.0.0.0')
