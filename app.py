@@ -90,10 +90,16 @@ def submit():
     # Render the template with user input, model output, and user details
     return render_template('index.html', chatgpt_input=chatgpt_input, chatgpt_output=chatgpt_output, userDetails=userDetails)
 
-# Route for rendering the form page
+# Route for rendering the form page and displaying SQL table
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # Fetch data from the database
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM users_gpt ORDER BY id DESC LIMIT 5")
+    userDetails = cur.fetchall()
+    cur.close()
+
+    return render_template('index.html', userDetails=userDetails)
 
 if __name__ == "__main__":
     app.run(debug=False, host='0.0.0.0')
