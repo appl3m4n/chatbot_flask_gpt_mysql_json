@@ -32,8 +32,12 @@
 <h1>{{age}}</h1>
 <h1>{{db}}</h1>-->
 
-<label><div id="output">{{chatgpt_input}}</div></label>
-<div id="output">{{chatgpt_output}}</div>
+<div id="output">  <label>Your question: </label>
+    {{chatgpt_input}}
+    <p></p>
+    <label>My answer: </label>
+    {{chatgpt_output}}</div>
+
 
 <div id="output"><table border="1">
     {% for user in userDetails %}
