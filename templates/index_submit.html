@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="/static/style.css">
     <title>Data Chatbot</title>
+    
     <script>
         function toggleVisibility(id) {
             var element = document.getElementById(id);
@@ -49,7 +50,7 @@
     {{chatgpt_output}}
 </div>
 
-<div id="output_table">
+<div id="output_table" class="toggle-button">
     <table border="1">
         {% for user in userDetails %}
         <tr>
@@ -60,7 +61,7 @@
         {% endfor %}
     </table>
 </div>
-<button onclick="toggleVisibility(['output_table'])">Show/Hide MySql Table</button>
+<button class="toggle-button" onclick="toggleVisibility('output_table')">x</button>
 </body>
 
 </body>
