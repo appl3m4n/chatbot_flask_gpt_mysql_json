@@ -95,7 +95,5 @@ def submit():
     # Render the template with user input, model output, and user details
     return render_template('index_submit.html', chatgpt_input=chatgpt_input, chatgpt_output=chatgpt_output, userDetails=userDetails)
 
-
-
 if __name__ == "__main__":
     app.run(debug=False, host='0.0.0.0')
