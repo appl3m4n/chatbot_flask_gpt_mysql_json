@@ -3,11 +3,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="/static/style.css">
-    <title>Data Management and Quality Chatbot</title>
+    <title>Data Chatbot</title>
+    <script>
+        function toggleVisibility(id) {
+            var element = document.getElementById(id);
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+    </script>
 </head>
 
 <body>
-<div id="title">Data Management and Quality Chatbot</div>
+    <div id="title"><a href="/" style="text-decoration: none; color: #fff;">Data Chatbot</a></div>
 <div id="form"><form name="passdata" action="/submit" method="post">
 <!--    <label>Name:</label>
 <input type="text" name="name">
@@ -31,22 +41,27 @@
 <h1>{{age}}</h1>
 <h1>{{db}}</h1>-->
 
-<div id="output">  <label>Your question: </label>
+<div id="output">
+    <label>Your question: </label>
     {{chatgpt_input}}
     <p></p>
     <label>My answer: </label>
-    {{chatgpt_output}}</div>
+    {{chatgpt_output}}
+</div>
 
-
-<div id="output"><table border="1">
-    {% for user in userDetails %}
-    <tr>
-        <td>{{user[0]}}</td>
-        <td>{{user[1]}}</td>
-        <td>{{user[2]}}</td>
-    </tr>
-    {% endfor %}
-</table></div>
+<div id="output_table">
+    <table border="1">
+        {% for user in userDetails %}
+        <tr>
+            <td>{{user[0]}}</td>
+            <td>{{user[1]}}</td>
+            <td>{{user[2]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<button onclick="toggleVisibility(['output_table'])">Show/Hide MySql Table</button>
+</body>
 
 </body>
 </html>
