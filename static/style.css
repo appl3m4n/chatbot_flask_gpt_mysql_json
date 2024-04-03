@@ -62,12 +62,35 @@ input[type="submit"]:hover {
     text-align: left;
     font-family: 'Arial', sans-serif;
     font-size: 16px; /* Adjusted font size */
-    margin: 20px auto;
+    margin: 20px auto 0 auto; /* Set bottom margin to 0 */
     background-color: #fff;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
+
+#output_table_button {
+    width: 85%; /* Adjusted width */
+    display: block;
+    background-color: #ccc;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin: auto; /* Set bottom margin to 0 */
+    max-width: 800px;
+    text-align: center; /* Center text */
+    font-family: 'Arial', sans-serif;
+}
+
+#output_table_button:hover {
+    background-color: #2c3e50;
+}
+
+
 
 table {
     width: 100%;
@@ -88,25 +111,6 @@ th {
     color: #fff;
 }
 
-/* Additional CSS for button */
-.toggle-button {
-    background-color: #3498db;
-    color: #fff;
-    cursor: pointer;
-    border: none;
-    border-radius: 12px; /* Keep rounding effect */
-    padding: 12px 24px; /* Smaller padding */
-    font-size: 14px; /* Smaller font size */
-    transition: background-color 0.3s ease;
-    display: block; /* Make button a block element */
-    margin: 20px auto; /* Center button horizontally and add margin at the bottom */
-    width: calc(85% - 40px); /* Stretch button all the way with the same width as the previous div */
-    max-width: 800px; /* Set max-width to match the previous div */
-}
-
-.toggle-button:hover {
-    background-color: #2c3e50;
-}
 
 /* Move the table styles inside the button div */
 #output_table {
@@ -134,9 +138,9 @@ th {
         font-size: 24px; /* Smaller title font size for mobile devices */
     }
 
-    #form, #output,#output_table {
+    #form, #output,#output_table{
         padding: 16px; /* Adjusted padding */
-    }
+    }  
 
     input, select {
         padding: 12px; /* Adjusted padding */

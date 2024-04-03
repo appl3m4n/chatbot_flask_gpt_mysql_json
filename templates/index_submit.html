@@ -50,7 +50,7 @@
     {{chatgpt_output}}
 </div>
 
-<div id="output_table" class="toggle-button">
+<div id="output_table">
     <table border="1">
         {% for user in userDetails %}
         <tr>
@@ -61,7 +61,8 @@
         {% endfor %}
     </table>
 </div>
-<button class="toggle-button" onclick="toggleVisibility('output_table')">x</button>
+
+<div id="output_table_button" onclick="toggleVisibility('output_table')">show/hide table</div>
 </body>
 
 </body>
