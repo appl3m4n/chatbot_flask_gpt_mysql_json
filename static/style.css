@@ -8,10 +8,29 @@ body {
 
 #title {
     background-color: #3498db;
-    color: #fff;
-    font-size: 36px; /* Larger title font size for larger screens */
-    text-align: center;
-    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Pushes items to the edges */
+    align-items: center; /* Center items vertically */
+    padding: 10px;
+}
+
+.image-container {
+    margin-right: 10px; /* Add some spacing between the logos */
+    margin-left: 10px;
+}
+
+.logo1 {
+    width: 40px; /* Adjust width as needed */
+    height: auto; /* Let the height adjust automatically to maintain aspect ratio */
+}
+
+.logo2 {
+    width: 30px; /* Adjust width as needed */
+    height: auto; /* Let the height adjust automatically to maintain aspect ratio */
+}
+
+.right-align {
+    margin-left: auto; /* Pushes the container to the right */
 }
 
 #form {
@@ -19,7 +38,7 @@ body {
     max-width: 800px;
     margin: 20px auto;
     background-color: #fff;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -76,7 +95,7 @@ input[type="submit"]:hover {
     color: #fff;
     cursor: pointer;
     border: none;
-    border-radius: 12px;
+    border-radius:  0 0 45px 45px;
     
     font-size: 16px;
     transition: background-color 0.3s ease;
@@ -90,7 +109,17 @@ input[type="submit"]:hover {
     background-color: #2c3e50;
 }
 
+#output_table_button {
+    /*display: flex;*/
+    align-items: center; /* Center items vertically */
+}
 
+#output_table_button img {
+    width: 18px; /* Adjust width as needed */
+    height: 18px; /* Adjust height as needed */
+    padding: 2px;
+    filter: brightness(0) invert(1); /* Change image color to white */   
+}
 
 table {
     width: 100%;
@@ -119,7 +148,7 @@ th {
 }
 
 #output_table, th, td {
-    border: 2px solid #ddd;
+    /*border: 2px solid #ddd;*/
 }
 
 th, td {
@@ -138,9 +167,10 @@ th {
         font-size: 24px; /* Smaller title font size for mobile devices */
     }
 
+    /*
     #form, #output,#output_table{
-        padding: 16px; /* Adjusted padding */
-    }  
+        padding: 16px; Adjusted padding */
+     
 
     input, select {
         padding: 12px; /* Adjusted padding */
